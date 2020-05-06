@@ -64,18 +64,9 @@ function findEmployeeByFirstName(arrayOfRecords, firstName) {
     return arrayOfRecords.find(employeeObj => employeeObj.firstName === firstName)
 }
 
-// calculatePayroll
-// Argument(s)
-// Array of employee records
-// Returns
-// Sum of pay owed to all employees for all dates, as a number
-// Behavior
-// Using wagesEarnedOnDate, accumulate the value of all dates worked by the employee in the record used as context. Amount should be returned as a number.
 
 function calculatePayroll(arrayOfRecords){
-    let total = 0 
-    arrayOfRecords.forEach(employeeObj => {
-        total += allWagesFor(employeeObj)
-    })
-    return total 
+   return arrayOfRecords.reduce((sum, employeeObj) => {
+        return sum += allWagesFor(employeeObj)
+    }, 0)
 }
